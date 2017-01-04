@@ -4,13 +4,7 @@ MAINTAINER Lutz Mueller <mueller.lutz@gmail.com>
 ENV         GLASSFISH_HOME  /usr/local/glassfish4
 ENV         PATH                $PATH:$JAVA_HOME/bin:$GLASSFISH_HOME/bin
 
-
-RUN         apk upgrade --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted && \
-                apk add --update libstdc++ \
-                curl \
-                ca-certificates \
-                bash && \
-            curl -L -o /tmp/glassfish-4.1.1.zip http://download.java.net/glassfish/4.1.1/release/glassfish-4.1.1.zip && \
+RUN         wget -O /tmp/glassfish-4.1.1.zip http://download.java.net/glassfish/4.1.1/release/glassfish-4.1.1.zip && \
             unzip /tmp/glassfish-4.1.1.zip -d /usr/local && \
             rm -f /tmp/glassfish-4.1.1.zip && \
             mkdir /webapp
